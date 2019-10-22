@@ -15,4 +15,16 @@ public class Test {
     private String mode; //试射方式
     private String site; //试射场地
     private boolean result; //试射结果
+
+    public Test() {
+    }
+
+    public Test(Long id, String missile, String date, String mode, String site, boolean result) {
+        this.id = id;
+        this.missile = missile;
+        this.date = date;
+        this.mode = mode;
+        this.site = site;
+        this.result = result;
+    }
 }
