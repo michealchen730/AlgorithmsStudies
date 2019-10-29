@@ -40,6 +40,12 @@ public class MissileController {
         }
     }
 
+    @GetMapping("/test233")
+    public Missile test233(){
+        Missile df = missileService.findByName("dongfen");
+        return df;
+    }
+
 
     @GetMapping("/test3")
     public String test3(){
