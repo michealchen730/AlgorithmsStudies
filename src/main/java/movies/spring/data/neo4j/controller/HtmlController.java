@@ -16,9 +16,9 @@ public class HtmlController {
         return "/html/homepage.html";
     }
 
-    @GetMapping("/force")
+    @GetMapping("/newforce")
     public String force() {
-        return "/html/force.html";
+        return "/html/newforce.html";
     }
 
 }
