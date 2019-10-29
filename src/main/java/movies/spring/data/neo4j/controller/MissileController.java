@@ -4,6 +4,7 @@ import movies.spring.data.neo4j.domain.Missile;
 import movies.spring.data.neo4j.services.MissileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,16 @@ public class MissileController {
     public MissileController(MissileService missileService) {
         this.missileService=missileService;
     }
+
+    @PostMapping("/search")
+    public Missile searchMissile(String missileName){
+        System.out.println(missileName);
+        return missileService.findByName(missileName);
+    }
+
+
+
+
 
     @GetMapping("/test")
     public String test(){

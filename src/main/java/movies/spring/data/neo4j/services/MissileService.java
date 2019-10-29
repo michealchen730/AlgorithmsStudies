@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author pp
  * @date 2019/10/22-12:33
@@ -33,4 +35,17 @@ public class MissileService {
     public Missile saveMissile(Missile missile){
         return missileRepository.save(missile);
     }
+
+    public Missile saveMissileByName(String missileName){
+        Missile missile=new Missile();
+        missile.setName(missileName);
+        return missileRepository.save(missile);
+    }
+
+    public void saveAllMissileByNamelist(List<String> namelist){
+        for (String missileName:namelist) {
+            saveMissileByName(missileName);
+        }
+    }
+
 }
