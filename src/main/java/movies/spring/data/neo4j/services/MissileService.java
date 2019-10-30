@@ -32,20 +32,58 @@ public class MissileService {
         return result;
     }
 
+    /**
+     * 导弹节点的保存操作
+     * @param missile
+     * @return
+     */
     public Missile saveMissile(Missile missile){
         return missileRepository.save(missile);
     }
 
+    /**
+     * 导弹节点的保存操作（只给导弹名称）
+     * @param missileName
+     * @return
+     */
     public Missile saveMissileByName(String missileName){
         Missile missile=new Missile();
         missile.setName(missileName);
         return missileRepository.save(missile);
     }
 
-    public void saveAllMissileByNamelist(List<String> namelist){
-        for (String missileName:namelist) {
+    /**
+     * 导弹节点的批量保存操作（只给导弹名称的列表）
+     * @param nameList
+     */
+    public void saveAllMissileByNameList(List<String> nameList){
+        for (String missileName:nameList) {
             saveMissileByName(missileName);
         }
+    }
+
+    /**
+     * 更新节点的属性
+     * @param missileName
+     * @param relationship
+     * @param updateValue
+     * @return
+     */
+    public Missile updateMissile(String missileName,String relationship,String updateValue){
+        Missile missile=missileRepository.findByName(missileName);
+        switch (relationship){
+            case "length":
+                missile.setLength(Integer.parseInt(updateValue));
+                break;
+            case "range":
+                missile.setRange(Integer.parseInt(updateValue));
+                break;
+            case "weight":
+                missile.setWeight(Integer.parseInt(updateValue));
+                break;
+            default:
+        }
+        return missileRepository.save(missile);
     }
 
 }

@@ -1,6 +1,7 @@
 package movies.spring.data.neo4j.controller;
 
 import movies.spring.data.neo4j.domain.Missile;
+import movies.spring.data.neo4j.domain.Test;
 import movies.spring.data.neo4j.services.MissileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,4 +73,30 @@ public class MissileController {
             return "fail";
         }
     }
+
+    @GetMapping("/test5")
+    public String test5(){
+        Missile df = missileService.findByName("RNG");
+        df.setLength(30);
+        df.setWeight(30);
+        df.setRange(30);
+        Missile ms = missileService.saveMissile(df);
+        if (ms!=null){
+            return "success1";
+        }else{
+            return "fail";
+        }
+    }
+
+    @GetMapping("/test6")
+    public String test6(){
+        Missile ms = missileService.updateMissile("RNG","range","10000");
+        if (ms!=null){
+            return "success1";
+        }else{
+            return "fail";
+        }
+    }
+
+
 }
