@@ -21,4 +21,9 @@ public class HtmlController {
         return "/html/newforce.html";
     }
 
+    @GetMapping("/homepageceshi")
+    public String homepageceshi() {
+        return "/html/homepageceshi.html";
+    }
+
 }
